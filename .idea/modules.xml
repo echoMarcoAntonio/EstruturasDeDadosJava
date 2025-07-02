@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/EstruturasDeDadosJava.iml" filepath="$PROJECT_DIR$/.idea/EstruturasDeDadosJava.iml" />
       <module fileurl="file://$PROJECT_DIR$/Vetor/Vetor.iml" filepath="$PROJECT_DIR$/Vetor/Vetor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VetorStrBuscaLinear/VetorStrBuscaLinear.iml" filepath="$PROJECT_DIR$/VetorStrBuscaLinear/VetorStrBuscaLinear.iml" />
     </modules>
   </component>
 </project>
