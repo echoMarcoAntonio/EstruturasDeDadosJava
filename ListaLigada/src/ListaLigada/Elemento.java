@@ -2,25 +2,29 @@ package ListaLigada;
 
 public class Elemento {
     private String valor;
-    private Elemento proximoElemento;
+    private Elemento proximo;
 
     // Método Construtor
     public Elemento(String novoValor) {
+        this.valor = novoValor;
     }
 
-    // Getter´s e Setter´s
+    // Métodos getters e setters
     public String getValor(){
         return valor;
     }
     public void setValor(String valor){
         this.valor = valor;
     }
-    public Elemento getProximoElemento(){
-        return proximoElemento;
+    public Elemento getProximo(){
+        return proximo;
     }
-    public void setProximoElemento(Elemento proximoElemento){
-        this.proximoElemento = proximoElemento;
+    public void setProximo(Elemento proximoElemento){
+        this.proximo = proximoElemento;
     }
 
     // Demais métodos
+    public void adicionar(String novoValor){
+        Elemento novoElemento = new Elemento(novoValor); // Atribui valor ao elemento
+    }
 }

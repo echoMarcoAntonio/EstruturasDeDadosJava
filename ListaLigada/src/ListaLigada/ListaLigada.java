@@ -5,7 +5,12 @@ public class ListaLigada {
     private Elemento ultimo;
     private int tamanho;
 
-    // Getter´s e Setter´s
+    // Método Construtor (explícito)
+    public ListaLigada(){
+        this.tamanho = 0;
+    }
+
+    // Métodos getters e setters
     public Elemento getPrimeiro(){
         return primeiro;
     }
@@ -28,11 +33,29 @@ public class ListaLigada {
     // Demais métodos
     public void adicionar(String novoValor){
         Elemento novoElemento = new Elemento(novoValor);
-        // Cenário 1: Lista vazia, primeira inserção de elemento.
+        // Caso 1: Lista vazia — define o primeiro e último elemento
         if (this.primeiro == null && this.ultimo == null){
             this.primeiro = novoElemento;
             this.ultimo = novoElemento;
-            this.tamanho ++;
+        } else { // Caso 2: Lista não vazia — adiciona o novo elemento após o último
+            this.ultimo.setProximo(novoElemento);
+            this.ultimo = novoElemento;
         }
+        this.tamanho ++;
+    }
+
+    public void remover(String novoValor){
+        // TODO: Implementar lógica de remoção de elemento
+    }
+
+    public Elemento getPosicao(int posicao){
+        Elemento atual = this.primeiro;
+        for (int i = 0; i < posicao; i++){
+            // Verifica se há um próximo elemento para avançar na lista
+            if (atual.getProximo() != null){
+                atual = atual.getProximo(); // atual passa a apontar para seu próximo elemento
+            }
+        }
+        return atual;
     }
 }
