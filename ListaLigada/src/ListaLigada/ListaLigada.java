@@ -1,8 +1,8 @@
 package ListaLigada;
 
-public class ListaLigada {
-    private Elemento primeiro;
-    private Elemento ultimo;
+public class ListaLigada<TIPO> {
+    private Elemento<TIPO> primeiro;
+    private Elemento<TIPO> ultimo;
     private int tamanho;
 
     // Método Construtor (explícito)
@@ -11,16 +11,16 @@ public class ListaLigada {
     }
 
     // Métodos getters e setters
-    public Elemento getPrimeiro(){
+    public Elemento<TIPO> getPrimeiro(){
         return primeiro;
     }
-    public void setPrimeiro(Elemento primeiro) {
+    public void setPrimeiro(Elemento<TIPO> primeiro) {
         this.primeiro = primeiro;
     }
-    public Elemento getUltimo(){
+    public Elemento<TIPO> getUltimo(){
         return ultimo;
     }
-    public void setUltimo(Elemento ultimo) {
+    public void setUltimo(Elemento<TIPO> ultimo) {
         this.ultimo = ultimo;
     }
     public int getTamanho(){
@@ -31,8 +31,8 @@ public class ListaLigada {
     }
 
     // Demais métodos
-    public void adicionar(String novoValor){
-        Elemento novoElemento = new Elemento(novoValor);
+    public void adicionar(TIPO novoValor){
+        Elemento<TIPO> novoElemento = new Elemento<TIPO>(novoValor);
         // Caso 1: Lista vazia — define o primeiro e último elemento
         if (this.primeiro == null && this.ultimo == null){
             this.primeiro = novoElemento;
@@ -44,26 +44,25 @@ public class ListaLigada {
         this.tamanho ++;
     }
 
-    public void remover(String valorProcurado){
-        Elemento anterior = null;
-        Elemento atual = this.primeiro;
+    public void remover(TIPO valorProcurado){
+        Elemento<TIPO> anterior = null;
+        Elemento<TIPO> atual = this.primeiro;
         for (int i = 0; i < this.getTamanho(); i++){
-            // Cenário 4: Remoção do último elemento da lista.
-            if (this.tamanho == 1){
-                this.primeiro= null;
-                this.ultimo = null;
-            }
-            if (atual.getValor().equalsIgnoreCase(valorProcurado)) {
-                // Cenário 1: Elemento a ser removido é a primeira posição da lista.
-                if (atual == primeiro) {
+            if (atual.getValor().equals(valorProcurado)) { // equals: método padrão, filho de Object do Java.
+                // Cenário 1: Remoção de um único elemento da lista.
+                if (this.tamanho == 1){
+                    this.primeiro= null;
+                    this.ultimo = null;
+                // Cenário 2: Elemento a ser removido é a primeira posição da lista.
+                }else if (atual == primeiro){
                     this.primeiro = atual.getProximo();
                     atual.setProximo(null);
-                    // Cenario 2: Elemento a ser removido é o último da lista.
-                } else if (atual == ultimo) {
+                // Cenário 3: Elemento a ser removido é o último da lista.
+                }else if (atual == ultimo){
                     this.ultimo = anterior;
                     anterior.setProximo(null);
-                } else {
-                    // Cenário 3: Elemento a ser removido não está nas extremidades da lista.
+                // Cenário 4: Elemento a ser removido não está nas extremidades da lista.
+                }else{
                     anterior.setProximo(atual.getProximo());
                     atual = null;
                 }
@@ -75,8 +74,8 @@ public class ListaLigada {
         }
     }
 
-    public Elemento getPosicao(int posicao){
-        Elemento atual = this.primeiro;
+    public Elemento<TIPO> getPosicao(int posicao){
+        Elemento<TIPO> atual = this.primeiro;
         for (int i = 0; i < posicao; i++){
             // Verifica se há um próximo elemento para avançar na lista
             if (atual.getProximo() != null){

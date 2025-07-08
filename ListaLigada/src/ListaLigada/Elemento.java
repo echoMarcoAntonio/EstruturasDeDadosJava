@@ -1,30 +1,30 @@
 package ListaLigada;
 
-public class Elemento {
-    private String valor;
-    private Elemento proximo;
+public class Elemento<TIPO> {
+    private TIPO valor;
+    private Elemento<TIPO> proximo;
 
     // Método Construtor
-    public Elemento(String novoValor) {
+    public Elemento(TIPO novoValor) {
         this.valor = novoValor;
     }
 
     // Métodos getters e setters
-    public String getValor(){
+    public TIPO getValor(){
         return valor;
     }
-    public void setValor(String valor){
+    public void setValor(TIPO valor){
         this.valor = valor;
     }
-    public Elemento getProximo(){
+    public Elemento<TIPO> getProximo(){
         return proximo;
     }
-    public void setProximo(Elemento proximoElemento){
+    public void setProximo(Elemento<TIPO> proximoElemento){
         this.proximo = proximoElemento;
     }
 
     // Demais métodos
-    public void adicionar(String novoValor){
-        Elemento novoElemento = new Elemento(novoValor); // Atribui valor ao elemento
+    public void adicionar(TIPO novoValor){
+        Elemento<TIPO> novoElemento = new Elemento<TIPO>(novoValor); // Atribui valor ao elemento
     }
 }
