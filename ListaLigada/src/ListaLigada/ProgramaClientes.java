@@ -11,5 +11,7 @@ public class ProgramaClientes {
         for (int i = 0; i < clientes.getTamanho(); i++) {
             System.out.println(clientes.getPosicao(i).getValor());
         }
+
+        // LinkedList<Cliente> clientes2 = new LinkedList<Cliente>();
     }
 }
